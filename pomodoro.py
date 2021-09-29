@@ -2,7 +2,7 @@ from time import sleep
 from winsound import Beep
 
 def start_timer(seconds):
-    while seconds > 0:
+    while seconds >= 0:
         print(f'\r>>> {seconds // 60:02} : {seconds % 60:02}', end='')
         sleep(1)
         seconds -= 1
