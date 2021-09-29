@@ -16,6 +16,7 @@ def main():
         while inp.lower() != 'y':
             inp = input('\n>>> Do you want to start the timer? (Y): ')
         start_timer(25 * 60)
+        beep()
         print('\n>>> Rest')
         start_timer(5 * 60)
         beep()
