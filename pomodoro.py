@@ -8,8 +8,10 @@ def start_timer(seconds):
         sleep(1)
         seconds -= 1
 
+
 def beep():
     Beep(2500, 1000)
+
 
 def main():
     while True:
