@@ -9,7 +9,7 @@ LONG_REST_TIME = 30 * 60
 WORK_TIME = 25 * 60
 
 
-def start_timer(seconds: int):
+def start_timer(seconds: int) -> None:
     print(f'\r>>> {seconds // 60:02} : {seconds % 60:02}', end='')
     while seconds > 0:
         time.sleep(1)
@@ -17,23 +17,23 @@ def start_timer(seconds: int):
         print(f'\r>>> {seconds // 60:02} : {seconds % 60:02}', end='')
 
 
-def cycle(rest_in_sec: int):
+def cycle(rest_in_sec: int) -> None:
     start_timer(WORK_TIME)
-    beep()
+    signal_timer_to_stop()
     print('\n>>> Rest')
     start_timer(rest_in_sec)
-    beep()
+    signal_timer_to_stop()
 
 
-def beep():
+def signal_timer_to_stop() -> None:
     winsound.Beep(2500, 1000)
 
 
-def clear_screen():
+def clear_screen() -> None:
     os.system('CLS')
 
 
-def process_user_input():
+def process_user_input() -> None:
     inp = str()
     while inp not in ('y', 'n'):
         inp = input('\n>>> Do you want to start the timer? (Y/N): ')
@@ -45,13 +45,12 @@ def process_user_input():
         shut_down()
 
 
-def shut_down():
-    print('Нажмите любую кнопку, чтобы завершить программу')
-    input()
+def shut_down() -> None:
+    input('Нажмите любую кнопку, чтобы завершить программу')
     sys.exit(0)
 
 
-def main():
+def main() -> None:
     cycle_count = 1
     while True:
         process_user_input()
