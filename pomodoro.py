@@ -4,11 +4,6 @@ import time
 import winsound
 
 
-SHORT_REST_TIME = 5 * 60
-LONG_REST_TIME = 30 * 60
-WORK_TIME = 25 * 60
-
-
 def start_timer(seconds: int) -> None:
     print(f'\r>>> {seconds // 60:02} : {seconds % 60:02}', end='')
     while seconds > 0:
@@ -18,7 +13,8 @@ def start_timer(seconds: int) -> None:
 
 
 def cycle(rest_in_sec: int) -> None:
-    start_timer(WORK_TIME)
+    work_time = 25 * 60
+    start_timer(work_time)
     signal_timer_to_stop()
     print('\n>>> Rest')
     start_timer(rest_in_sec)
@@ -51,10 +47,12 @@ def shut_down() -> None:
 
 
 def main() -> None:
+    short_rest_time = 5 * 60
+    long_rest_time = 30 * 60
     cycle_count = 1
     while True:
         process_user_input()
-        cycle(SHORT_REST_TIME if cycle_count != 0 else LONG_REST_TIME)
+        cycle(short_rest_time if cycle_count != 0 else long_rest_time)
         cycle_count = (cycle_count + 1) % 4
 
 
